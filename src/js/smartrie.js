@@ -1,5 +1,5 @@
 "use strict";
-function similar(a, b) {
+let stringSimilarity = (a, b) => {
 	let i = 0
 	for(i; i < a.length, i < b.length; ++i) {
 		if(a[i] == b[i]) continue 
@@ -8,7 +8,10 @@ function similar(a, b) {
 	return i
 }
 
-let Smartrie = function(str) {
+let trieToString = (v) => v.value
+let trieIsComplete = (v) => v.complete
+
+let Smartrie = function(str = "") {
 	this.value = str 
 	this.children = []
 	this.complete = 0
@@ -37,6 +40,7 @@ Smartrie.prototype.addChild = function(str) {
 	let child = new Smartrie(str)
 	child.complete = 1
 	this.children.push(child)
+	return child
 }
 
 Smartrie.prototype.add = function(str) {
@@ -46,17 +50,19 @@ Smartrie.prototype.add = function(str) {
 		return this
 	}
 	let found = this.find(str)
+	// debugging, let's find out what's happening here
 	if(found.head !== "" && found.tail !== "" && found.trie.value !== found.head) {
 		found.trie.split(found.head.length)
 	}
-	found.trie.addChild(found.tail)
+	if(found.tail !== "") found.trie.addChild(found.tail)
+	else found.trie.complete = 1
 }
 
 Smartrie.prototype.find = function(str) {
 	if(str === this.value) return new SmartrieFindResult(this, str, "")
 	let i = 0, found, children = this.children, len = children.length,
-		sim = similar(this.value, str), tail = str.substring(sim), head = str.substring(0, sim)
-	if(tail && (sim !== 0 || this.value === "")) {
+		sim = stringSimilarity(this.value, str), tail = str.substring(sim), head = str.substring(0, sim)
+	if(tail && (sim == this.value.length || this.value === "")) {
 		for(i; i < len; ++i) {
 			found = children[i].find(tail)
 			if(found.head) return found
@@ -83,4 +89,9 @@ Smartrie.prototype.enumerate = function(str = "", d=0) {
 
 if(module) {
 	module.exports.Smartrie = Smartrie;
+	module.exports.util = {
+		stringSimilarity:stringSimilarity,
+		trieToString:trieToString,
+		trieIsComplete:trieIsComplete
+	}
 }
