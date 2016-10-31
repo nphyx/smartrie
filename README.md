@@ -49,16 +49,17 @@ trie.add("brad");
 trie.add("alex");
 trie.add("allan");
 
-// find matching child with trie.find()
-trie.find("al"); // trie {value:"al",children:[(..lan..),(..ex..)]}
+// find matching child with trie.find(), returns closest find, head (matching part), tail (remaining)
+trie.find("al"); // {trie:{value:"al",children:[(..lan..),(..ex..)]},head:"al",tail:""}
+trie.find("allison"); // {trie:{value:"al",children:[(..lan..),(..ex..)]},head:"al",tail:"lison"}
 
 // count completions of a string with trie.countCompletions()
-trie.find("b").countCompletions(); // 4
-trie.countCompletions("b"); // 4
+trie.find("b").trie.countCompletions(); // 4
+trie.countCompletions("b"); // 4 (TODO: UNIMPLEMENTED)
 
 // list completions of a string with trie.complete()
-trie.complete("b"); // ["bob","bobby","bret","brad"]
 trie.find("b").complete(); // ["ob","obby","ret","rad"]
+trie.complete("b"); // ["bob","bobby","bret","brad"] (TODO: UNIMPLEMENTED)
 ```
 
 CLI
@@ -73,14 +74,14 @@ node smartrie/index.js
 > add brad
 > add alex
 > add allan
-> find b # list direct children of "b"
-ob r
-> find al # list direct children of "al"
-len ex
-> complete b # list all completions of "b"
-bob bobby bret brad
-> count b # count completions of "b"
+> find b # count complete children of "b"
 4
+> find bob # count complete children of "bob"
+2
+> find al # count complete children of "al"
+2
+> find al # count complete children of "all"
+1
 ```
 
 License
