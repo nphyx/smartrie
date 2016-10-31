@@ -1,0 +1,43 @@
+{
+  "name": "@nphyx/smartrie",
+  "version": "0.0.1",
+  "repository": "https://github.com/nphyx/smartrie",
+  "description": "A memory-efficient take on tries in Javascript for Node and browsers.",
+  "author": "Justen Robertson <nphyxx@gmail.com>",
+  "main": "index.js",
+	"dependencies": {},
+  "devDependencies": {
+    "jsdox": "^0.4.9",
+    "jshint": "*",
+    "mocha": "*",
+    "should": "*"
+  },
+  "jshintConfig": {
+    "curly": false,
+    "latedef": "nofunc",
+    "strict": false,
+    "globalstrict": false,
+    "newcap": true,
+    "quotmark": "double",
+    "undef": true,
+    "unused": true,
+    "asi": true,
+    "esnext": true,
+    "browser": true,
+    "devel": true,
+    "node": true,
+    "worker": true,
+    "globals": {
+      "chai": false,
+      "describe": false,
+      "define": false,
+      "it": false,
+      "xit": false,
+      "before": false,
+      "beforeEach": false,
+      "after": false,
+      "afterEach": false
+    }
+  },
+  "license": "MIT"
+}

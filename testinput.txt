@@ -1,0 +1,12 @@
+12
+add bob
+add bobbert
+add bobberty
+add bret
+add brad
+add allan
+add albert
+add allison
+find b
+find bo
+find all
