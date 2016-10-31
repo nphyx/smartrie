@@ -30,8 +30,8 @@ function main(input) {
 				break;
 			case "find": 
 				end = contacts.find(row.substring(split+1))
-				if(end.tail !== "") console.log(0, row.substring(split+1))
-					else console.log(end.trie.countCompletions(), row.substring(split+1))
+				if(end.tail !== "") console.log(0)
+					else console.log(end.trie.countCompletions())
 				break;
 			case "enum":
 				console.log("enumerating")
