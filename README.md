@@ -38,7 +38,7 @@ API
 Smartrie provides an object-oriented interface for use within an application.
 
 ```javascript
-const Smartrie = require("./src/js/smartrie.js")
+const Smartrie = require("./src/js/smartrie.js").Smartrie
 let trie = new Smartrie(); // create root node
 
 // add items to the trie with trie.add()

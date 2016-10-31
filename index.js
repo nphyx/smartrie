@@ -1,5 +1,5 @@
 "use strict";
-let Smartrie = require("./src/js/smartrie.js")
+let Smartrie = require("./src/js/smartrie.js").Smartrie
 process.stdin.resume()
 process.stdin.setEncoding("ascii")
 
